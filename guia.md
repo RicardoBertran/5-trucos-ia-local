@@ -73,14 +73,14 @@ llama.cpp permite guardar la caché KV en un formato comprimido. Por defecto se 
 - **F16**: máxima fidelidad, ocupa más.
 - **Q4_0**: ocupa mucho menos, con una pérdida de precisión pequeña.
 
-Las opciones `--cache-type-k` y `--cache-type-v` configuran por separado la caché de las claves (K) y la de los valores (V):
+Las opciones `--cache-type-k` y `--cache-type-v` configuran por separado la caché de las claves (K) y la de los valores (V). Ojo: en la orden el nombre del formato va en minúsculas, `q4_0`; en mayúsculas no funciona.
 
 ```bash
 # Caché KV en F16 (el comportamiento por defecto)
 llama-cli -m ruta/a/tu/modelo.gguf --ctx-size 16384
 
-# Caché KV comprimida en Q4_0
-llama-cli -m ruta/a/tu/modelo.gguf --ctx-size 16384 --cache-type-k Q4_0 --cache-type-v Q4_0
+# Caché KV comprimida en q4_0
+llama-cli -m ruta/a/tu/modelo.gguf --ctx-size 16384 --cache-type-k q4_0 --cache-type-v q4_0
 ```
 
 ### Qué esperar
@@ -167,7 +167,7 @@ Así se vería una orden con los cuatro trucos de llama.cpp aplicados a la vez (
 llama-cli -m ruta/a/tu/modelo.gguf \
   --tensor-split 45,55 \
   --flash-attn on \
-  --cache-type-k Q4_0 --cache-type-v Q4_0 \
+  --cache-type-k q4_0 --cache-type-v q4_0 \
   --ctx-size 16384
 ```
 
